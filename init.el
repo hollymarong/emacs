@@ -1,40 +1,7 @@
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-  ;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-  )
-
-(require 'cl)
-
-;;add whatever package you wnat here
-(defvar marong/packages '(
-			  company
-			  monokai-theme
-			  swiper
-			  counsel
-			  js2-mode
-			  nodejs-repl
-			 ) "Default packages")
-
-(defun marong/packages-installed-p ()
-  (loop for pkg in marong/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-
-(unless (marong/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg marong/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'init-packages)
 
 
-(load-theme 'monokai t)
-
-;;(require 'smex) ; Not needed if you use package.el
-;;(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-(global-set-key (kbd "M-x") 'smex)
 
 
 (ivy-mode 1)
@@ -56,14 +23,6 @@
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 
-;; config js2-node-alist for js files
-(setq auto-mode-alist
-      (append
-       '(("\\.js\\'" . js2-mode))
-       auto-mode-alist))
-
-;; nodejs-repl
-(require 'nodejs-repl)
 
 
 (tool-bar-mode -1)  ;close tool bar 
@@ -78,12 +37,16 @@
 ;- save your config
 ;- define a function to quickly open your config file
 
+(global-auto-revert-mode t)
 (global-linum-mode t)
 (global-company-mode t)
+
 
 (defun open-my-init-file()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
+
+(setq ring-bell-function 'ignore)
 
 (global-set-key (kbd "<f2>") 'open-my-init-file)
 
@@ -91,6 +54,7 @@
 (setq-default cursor-type 'bar)
 
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 (require 'org)
 
