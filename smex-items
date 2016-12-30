@@ -1,16 +1,17 @@
 
 ;; ----- smex-history -----
 (
+ hippie-expand
  global-auto-revert-mode
  cd
  5x5
  arp
  dbx
  dig
- erc
 )
 
 ;; ----- smex-data -----
 (
  (global-auto-revert-mode . 1)
+ (hippie-expand . 1)
 )
