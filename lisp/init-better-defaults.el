@@ -17,6 +17,8 @@
 
 (delete-selection-mode t)
 
+
+
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 ;; buffer indent
@@ -60,11 +62,8 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; (require 'dired)
-
-(with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-  )
+(require 'dired-x)
+(setq dired-dwim-target t)
 
 
 

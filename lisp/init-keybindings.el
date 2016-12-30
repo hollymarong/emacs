@@ -16,4 +16,11 @@
 (global-set-key (kbd "C-M-/") 'hippie-expand)
 
 
+
+;; only after load dired, do not use require
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+  )
+
+
 (provide 'init-keybindings)

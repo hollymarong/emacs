@@ -1,17 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ package-list-packages
+ reveal-in-osx-finder
  hippie-expand
  global-auto-revert-mode
  cd
  5x5
  arp
- dbx
- dig
 )
 
 ;; ----- smex-data -----
 (
  (global-auto-revert-mode . 1)
  (hippie-expand . 1)
+ (reveal-in-osx-finder . 1)
+ (package-list-packages . 1)
 )

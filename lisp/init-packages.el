@@ -32,8 +32,16 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
+
+(defadvice show-paren-function (around fix-show-paren-function activate)
+  (cond ((looking-at-p "\\s(") ad-do-it)
+	(t (save-excursion
+	     (ignore-errors (backward-up-list))
+	     ad-do-it))))
+
 (smartparens-global-mode t)
 
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
 (load-theme 'monokai t)
 
