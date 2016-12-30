@@ -2,7 +2,7 @@
 
 (when (>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
+  ;; (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
   ;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
   )
@@ -32,11 +32,12 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
-(require 'smartparens-config)
 (smartparens-global-mode t)
 
 
 (load-theme 'monokai t)
+
+(global-company-mode t)
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)
@@ -54,5 +55,10 @@
 ;; config popwin
 (require 'popwin)
 (popwin-mode 1)
+
+;; config swiper
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+
 
 (provide 'init-packages)

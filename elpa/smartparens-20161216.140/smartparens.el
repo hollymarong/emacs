@@ -768,6 +768,7 @@ MODES."
   :group 'smartparens)
 
 ;;;###autoload
+
 (define-globalized-minor-mode smartparens-global-mode
   smartparens-mode
   turn-on-smartparens-mode)
