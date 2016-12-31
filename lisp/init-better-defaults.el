@@ -66,6 +66,34 @@
 (setq dired-dwim-target t)
 
 
+(defun remove-dos-eol()
+  "Replace DOS CR LF with Unix eolns CR"
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match "")))
+
+(defun hidden-dos-eol()
+  "Do not show ^M in files containing mixed UNIX and DOS line endings."
+  (interactive)
+  (setq buffer-display-table (make-display-table))
+  (aset buffer-display-table ?\^M []))
+
+;;; dwim = do what i mean
+(defun occur-dwim ()
+  "Call 'occur' with sane default."
+  (interactive)
+  (push (if (region-active-p)
+	    (buffer-substring-no-properties
+	     (region-beginning)
+	     (region-end))
+	  (let ((sym (thing-at-point 'symbol)))
+	    (when (stringp sym)
+	      (regexp-quote sym))))
+	regexp-history)
+  (call-interactively 'occur))
+
+
+;; (set-language-environment "UTF-8")
 
 (provide 'init-better-defaults)
 
