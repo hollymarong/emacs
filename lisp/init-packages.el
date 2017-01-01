@@ -3,7 +3,9 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   ;; (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (setq package-archives
+            '(("popkit" . "http://elpa.popkit.org/packages/")))
+  ;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
   ;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
   )
 
@@ -23,6 +25,16 @@
 			  expand-region
 			  iedit
 			  org-pomodoro
+			  helm-ag
+			  auto-yasnippet
+			  ;;flycheck
+			  evil
+			  evil-leader
+			  window-numbering
+			  evil-surround
+			  evil-nerd-commenter
+			  which-key
+			  powerline
 			 ) "Default packages")
 
 (defun marong/packages-installed-p ()
@@ -128,5 +140,30 @@
 
 (require 'org-pomodoro)
 
+(require 'yasnippet)
+(yas-reload-all)
+
+;; (add-hook 'js2-mode-hook 'flycheck-mode)
+
+(evil-mode 1)
+;; (setq-default evil-want-C-u-scroll t)
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(global-evil-leader-mode)
+
+(window-numbering-mode 1)
+
+(require 'powerline)
+(powerline-default-theme)
+
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
+
+(evilnc-default-hotkeys)
 
 (provide 'init-packages)

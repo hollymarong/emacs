@@ -39,5 +39,31 @@
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
+(global-set-key (kbd "M-s e") 'iedit-mode)
+
+(global-set-key (kbd "C-w") 'backward-kill-word)
+
+;; project search
+;; (global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+
+(evil-leader/set-key
+  "ff" 'find-file
+  "fr" 'recentf-open-files
+  "bb" 'switch-to-buffer
+  "bk" 'kill-buffer
+  "pf" 'counsel-git
+  "ps" 'helm-do-ag-project-root
+  "0" 'select-window-0
+  "1" 'select-window-1
+  "2" 'select-window-2
+  "3" 'select-window-3
+  "w/" 'split-window-right
+  "w-" 'split-window-below
+  ":" 'counsel-M-x
+  "wM" 'delete-other-windows
+  )
+
+(define-key evil-normal-state-map (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+(define-key evil-visual-state-map (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
 (provide 'init-keybindings)

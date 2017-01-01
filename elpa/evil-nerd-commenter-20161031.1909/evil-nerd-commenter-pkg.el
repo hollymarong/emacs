@@ -1,0 +1,1 @@
+(define-package "evil-nerd-commenter" "20161031.1909"                 "Comment/uncomment lines efficiently. Like Nerd Commenter in Vim")
