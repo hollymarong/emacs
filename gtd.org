@@ -1,14 +1,19 @@
 * 工作安排
 
-** TODO 学习完Emacs第6、7天的视频
+** DONE 学习完Emacs第6、7天的视频
    DEADLINE: <2017-01-01 周日 00:00> SCHEDULED: <2016-12-31 周六 10:00>
 
-** TODO 学习完Emacs视频6
+** DONE 学习完Emacs视频6
    DEADLINE: <2016-12-31 周六 18:00> SCHEDULED: <2016-12-31 周六 12:00>
 
-** TODO 学习完EMacs视频7
+** DONE 学习完EMacs视频7
    DEADLINE: <2017-01-01 周日 00:00> SCHEDULED: <2016-12-31 周六 19:00>
 
-** TODO [#B] 
+** TODO [#B] 学习视频8
 
+** TODO [#B]学习视频9
+
+** TODO [#B]学习视频10
+
+** TODO [#B]学习视频11 
 

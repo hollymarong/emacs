@@ -3,8 +3,10 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   ;; (package-initialize)
-  (setq package-archives
-            '(("popkit" . "http://elpa.popkit.org/packages/")))
+  ;; (setq package-archives
+    ;;        '(("popkit" . "http://elpa.popkit.org/packages/")))
+  (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
   ;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
   ;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
   )
@@ -34,7 +36,7 @@
 			  evil-surround
 			  evil-nerd-commenter
 			  which-key
-			  powerline
+			  ;;powerline
 			 ) "Default packages")
 
 (defun marong/packages-installed-p ()
@@ -157,13 +159,34 @@
 
 (window-numbering-mode 1)
 
-(require 'powerline)
-(powerline-default-theme)
+;; (require 'powerline)
+;; (powerline-default-theme)
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
 
 (evilnc-default-hotkeys)
+
+(dolist (mode '(ag-mode
+		flycheck-error-list-mode
+		occur-mode
+		git-rebase-mode))
+  (add-to-list 'evil-emacs-state-modes mode))
+
+(add-hook 'occur-mode-hook
+	  (lambda ()
+	    (evil-add-hjkl-bindings occur-mode-map 'emacs
+	      (kbd "/")       'evil-search-forward
+	      (kbd "n")       'evil-search-next
+	      (kbd "N")       'evil-search-previous
+	      (kbd "C-d")     'evil-scroll-down
+	      (kbd "C-u")     'evil-scroll-up)))
+
+
+(which-key-mode 1)
+(setq which-key-side-window-location 'right)
+
+
 
 (provide 'init-packages)

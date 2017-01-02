@@ -61,6 +61,7 @@
   "w-" 'split-window-below
   ":" 'counsel-M-x
   "wM" 'delete-other-windows
+  "qq" 'save-buffers-kill-terminal
   )
 
 (define-key evil-normal-state-map (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
